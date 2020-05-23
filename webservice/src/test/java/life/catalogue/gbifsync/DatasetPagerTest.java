@@ -26,13 +26,26 @@ public class DatasetPagerTest {
     final JacksonJsonProvider jacksonJsonProvider = new JacksonJaxbJsonProvider(ApiModule.MAPPER, JacksonJaxbJsonProvider.DEFAULT_ANNOTATIONS);
     ClientConfig cfg = new ClientConfig(jacksonJsonProvider);
     cfg.register(new LoggingFeature(Logger.getLogger(getClass().getName()), Level.ALL, LoggingFeature.Verbosity.PAYLOAD_ANY, 1024));
-  
+
     final Client client = ClientBuilder.newClient(cfg);
-    
+
     DatasetPager pager = new DatasetPager(client, new GbifConfig());
     while (pager.hasNext()) {
       pager.next().forEach(System.out::println);
     }
   }
-  
+
+  @Test
+  public void shouldReturnContactsFirstname() throws Exception {
+    final JacksonJsonProvider jacksonJsonProvider = new JacksonJaxbJsonProvider(ApiModule.MAPPER, JacksonJaxbJsonProvider.DEFAULT_ANNOTATIONS);
+    ClientConfig cfg = new ClientConfig(jacksonJsonProvider);
+    cfg.register(new LoggingFeature(Logger.getLogger(getClass().getName()), Level.ALL, LoggingFeature.Verbosity.PAYLOAD_ANY, 1024));
+
+    final Client client = ClientBuilder.newClient(cfg);
+
+    DatasetPager pager = new DatasetPager(client, new GbifConfig());
+    while (pager.hasNext()) {
+      System.out.println(pager.next().get(0).getContacts().get(0).firstName);
+    }
+  }
 }
