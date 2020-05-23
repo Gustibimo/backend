@@ -174,14 +174,9 @@ public class DatasetWithSettings {
 
   public void setContacts(List<GContact> contacts) { dataset.setContacts(contacts); }
 
+  public String getContact() { return dataset.getContact(); }
 
-  public String getContact() {
-    return dataset.getContact();
-  }
-
-  public void setContact(String contact) {
-    dataset.setContact(contact);
-  }
+  public void setContact(String contact) { dataset.setContact(contact); }
 
   public License getLicense() {
     return dataset.getLicense();
