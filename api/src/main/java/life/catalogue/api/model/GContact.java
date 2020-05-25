@@ -6,6 +6,7 @@ public class GContact {
   public String type;
   public String firstName;
   public String lastName;
+  public List<String> email;
   public List<String> position;
   public String organization;
 

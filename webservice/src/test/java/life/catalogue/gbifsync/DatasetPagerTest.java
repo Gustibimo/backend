@@ -45,7 +45,7 @@ public class DatasetPagerTest {
 
     DatasetPager pager = new DatasetPager(client, new GbifConfig());
     while (pager.hasNext()) {
-      System.out.println(pager.next().get(0).getContacts().get(0).firstName);
+     pager.next().get(0).getContacts().forEach(gContact-> System.out.println(gContact.firstName));
     }
   }
 }
